@@ -1,9 +1,9 @@
 
-Particle p;
+ParticleSystem ps;
 PVector gravity;
 void setup() {
   size(600, 400);
-  p = new Particle(new PVector(width/2, height/2));
+  ps = new ParticleSystem(new PVector(width/2, 20));
   gravity = new PVector(0, 0.05);
 }
 
@@ -11,8 +11,9 @@ void setup() {
 void draw() {
 
   background(255);
-  p.display();
-
-  p.applyForce(gravity);
-  p.update();
+  ps.addParticle();
+  
+  ps.applyForce(gravity);
+  ps.run();
+ 
 }

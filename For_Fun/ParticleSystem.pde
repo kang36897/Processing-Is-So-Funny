@@ -34,7 +34,7 @@ class ParticleSystem{
   }
   
   public void run(){
-    for(int i = mParticles.size() - 1; i >= 0; i++){
+    for(int i = mParticles.size() - 1; i >= 0; i--){
       
       Particle p = mParticles.get(i);
       p.display();
