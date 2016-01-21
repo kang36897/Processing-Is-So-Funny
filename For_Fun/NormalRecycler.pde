@@ -32,4 +32,16 @@ class NormalRecycler implements Recycler<Particle> {
 
     return temp;
   }
+  
+  public void clear(){
+    if(isEmpty()){
+      return;
+    }
+    
+    Particle temp = mBin.mNext;
+    while(temp != DUMMY){
+      temp = temp.mNext;
+    }
+    mBin = temp;
+  }
 }
