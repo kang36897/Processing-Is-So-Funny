@@ -1,4 +1,4 @@
-
+//This is just a particle system.
 ParticleSystem ps;
 PVector gravity;
 void setup() {
