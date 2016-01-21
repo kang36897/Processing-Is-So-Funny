@@ -12,8 +12,7 @@ void draw() {
 
   background(255);
   ps.addParticle();
-  
+
   ps.applyForce(gravity);
   ps.run();
- 
 }

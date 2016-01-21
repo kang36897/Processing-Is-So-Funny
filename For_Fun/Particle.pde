@@ -17,12 +17,12 @@ public class Particle {
     lifeSpan = 255;
     mass = 1;
   }
-  
-  public void setLocation(PVector l){
+
+  public void setLocation(PVector l) {
     mLocation = l.copy();
     mVelocity = PVector.random2D();
     mAcceleration.mult(0);
-    lifeSpan = 255;  
+    lifeSpan = 255;
   }
 
   boolean isDead() {

@@ -4,6 +4,6 @@ interface Recycler<T extends Particle> {
   void recycle(Particle p);
 
   T get();
-  
+
   void clear();
 }
