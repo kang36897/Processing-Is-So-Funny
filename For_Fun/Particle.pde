@@ -1,27 +1,19 @@
-public class Particle {
+public class Particle extends Mover {
   Particle mNext;
 
-  PVector mLocation;
-  PVector mVelocity;
-  PVector mAcceleration;
-  float lifeSpan;
-  float mass;
+  float lifeSpan; 
 
   public Particle() {
+    super();
   }
 
   public Particle(PVector l) {
-    mLocation = l.copy();
-    mVelocity = PVector.random2D();
-    mAcceleration = new PVector();
+    super(l);
     lifeSpan = 255;
-    mass = 1;
   }
 
   public void setLocation(PVector l) {
-    mLocation = l.copy();
-    mVelocity = PVector.random2D();
-    mAcceleration.mult(0);
+    super.setLocation(l);
     lifeSpan = 255;
   }
 
@@ -40,16 +32,8 @@ public class Particle {
 
 
   void update() {
-    mLocation.add(mVelocity);
-    mVelocity.add(mAcceleration);
-
-    mAcceleration.mult(0);
-
+    super.update();
     lifeSpan -= 2;
-  }
-
-  void applyForce(PVector force) {
-    mAcceleration.add(force.div(mass));
   }
 
   void display() {

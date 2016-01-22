@@ -1,12 +1,18 @@
 class ParticleSystem {
-  PVector mOrigin;
+  Emitter mEmitter;
   NormalRecycler mRecycler;
 
   ArrayList<Particle> mParticles;
 
   public ParticleSystem(PVector l) {
-    mOrigin = l.copy();
+    mEmitter = new Emitter(l);
 
+    mRecycler = new NormalRecycler();
+    mParticles = new ArrayList<Particle>();
+  }
+
+  public ParticleSystem(Emitter m) {
+    mEmitter = m;
     mRecycler = new NormalRecycler();
     mParticles = new ArrayList<Particle>();
   }
@@ -23,10 +29,10 @@ class ParticleSystem {
     Particle newBorn;
 
     if (mRecycler.isEmpty()) {
-      newBorn = new Particle(mOrigin);
+      newBorn = new Particle(mEmitter.mLocation);
     } else {
       newBorn = mRecycler.get();
-      newBorn.setLocation(mOrigin);
+      newBorn.setLocation(mEmitter.mLocation);
     }
 
     mParticles.add(newBorn);
