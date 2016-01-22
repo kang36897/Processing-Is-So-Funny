@@ -5,7 +5,6 @@ class Attractor extends Mover {
     mass = 2;
   }
 
-
   public void display() {
     stroke(0);
     fill(255);
@@ -17,7 +16,7 @@ class Attractor extends Mover {
 
   public PVector attract(Mover m) {
     PVector f = PVector.sub(mLocation, m.mLocation);
-    float distance = constrain(f.mag(), 1, 5);
+    float distance = constrain(f.mag(), 0.1, 3);
     f.normalize();
     f.mult(G * mass * m.mass / (distance * distance));
     return f;
