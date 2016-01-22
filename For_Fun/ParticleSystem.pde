@@ -33,11 +33,12 @@ class ParticleSystem {
   }
 
   public void run() {
+    addParticle();
     for (int i = mParticles.size() - 1; i >= 0; i--) {
 
       Particle p = mParticles.get(i);
       p.run();
-      
+
       if (p.isDead()) {
         mParticles.remove(i);
       }

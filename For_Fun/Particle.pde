@@ -33,7 +33,7 @@ public class Particle {
     }
   }
 
-  void run(){
+  void run() {
     update();
     display();
   }
@@ -57,7 +57,7 @@ public class Particle {
     fill(127, lifeSpan);
     pushMatrix();
     translate(mLocation.x, mLocation.y);
-    ellipse(0, 0, mass * 24, mass * 24);
+    ellipse(0, 0, mass * 12, mass * 12);
 
     popMatrix();
   }
