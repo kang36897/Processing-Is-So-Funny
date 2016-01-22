@@ -33,6 +33,10 @@ public class Particle {
     }
   }
 
+  void run(){
+    update();
+    display();
+  }
 
 
   void update() {
