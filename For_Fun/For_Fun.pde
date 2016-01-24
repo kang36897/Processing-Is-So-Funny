@@ -1,31 +1,41 @@
-//This is just a particle system.
-ParticleSystem ps;
-Emitter m;
-Attractor a;
-float r;
-PVector gravity;
+//This is just a particle system. //<>// //<>//
+float distance = 150;
+Gear big;
+Gear[] gears = new Gear[3];
+PVector tempVelocity;
+PVector tempLocation = new PVector();
 void setup() {
   size(600, 400);
-  r = 100;
-  a = new Attractor( new PVector(width/2, height/2));
-  m = new Emitter(new PVector(width/2 - r, height/2), new PVector(0, 0));
-  ps = new ParticleSystem(m);
-  gravity = new PVector(0, 0.05);
+ 
+  smooth();
+
+  big = new Gear(new PVector(width / 2, height / 2), 0, 0, 0, 32);
+
+  float angle = 0;
+
+  for ( int i = 0; i < gears.length; i ++) {
+    gears[i] = new Gear(big.mLocation, distance, angle, -TWO_PI / 400, 16);
+    angle += HALF_PI * 4 / 3;
+    
+  }
 }
 
 
 void draw() {
-  background(255);
-
-  PVector force = a.attract(m);
-  m.applyForce(force);
-  m.applyForce(gravity);
-  m.update();
-
-  stroke(0, 127);
-  line(a.mLocation.x, a.mLocation.y, m.mLocation.x, m.mLocation.y);
-  a.display();
-
-  ps.applyForce(gravity);
-  ps.run();
+  background(0);
+  
+  big.display();
+  
+  for(int i = 0; i< gears.length; i++){
+    
+    stroke(255);
+    strokeWeight(2);
+    line(big.mLocation.x, big.mLocation.y, gears[i].mLocation.x, gears[i].mLocation.y);
+    
+    gears[i].display();
+    gears[i].update(); //<>//
+    
+  
+  }
+  
 }
