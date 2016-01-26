@@ -10,13 +10,17 @@ class DotParticle extends Particle {
     mVelocity.mult(0);
   }
 
+  public void lifeElapse() {
+    lifeSpan -= 0.7;
+  }
+
   void display() {
     stroke(0, lifeSpan);
     fill(255, lifeSpan);
+    strokeWeight(1);
     pushMatrix();
     translate(mLocation.x, mLocation.y);
-    ellipse(0, 0, mass * 4, mass * 4);
-
+    ellipse(0, 0, mass * 3, mass * 3);
     popMatrix();
   }
 }

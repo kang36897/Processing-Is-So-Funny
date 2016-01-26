@@ -19,6 +19,7 @@ void setup() {
 
     Star child = new SpecialStar(new PVector(0, 0), distance / 2, angle + PI, -TWO_PI / 200, 8);
     child.orbit(s);
+    child.attached(new LineParticleSystem(child));
 
     angle += HALF_PI * 4 / 3;
   }

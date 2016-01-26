@@ -1,5 +1,6 @@
 class DotParticleSystem extends ParticleSystem {
 
+  int eggCount = 0;
   public DotParticleSystem(PVector l) {
     super(l);
   }
@@ -9,6 +10,11 @@ class DotParticleSystem extends ParticleSystem {
   }
 
   public void addParticle() {
+    if (eggCount % 7 != 0) {
+      eggCount ++;
+      return;
+    }
+
     Particle newBorn;
 
     if (mRecycler.isEmpty()) {
@@ -19,5 +25,7 @@ class DotParticleSystem extends ParticleSystem {
     }
     newBorn.mVelocity.mult(0);
     mParticles.add(newBorn);
+
+    eggCount ++ ;
   }
 }

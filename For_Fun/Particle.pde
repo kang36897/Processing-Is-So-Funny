@@ -17,6 +17,13 @@ public class Particle extends Mover {
     lifeSpan = 255;
   }
 
+  public void reset() {
+    mLocation.mult(0);
+    mVelocity.mult(0);
+    mAcceleration.mult(0);
+    lifeSpan = 255;
+  }
+
   boolean isDead() {
     if (lifeSpan <= 0) {
       return true;
@@ -33,6 +40,10 @@ public class Particle extends Mover {
 
   void update() {
     super.update();
+    lifeElapse();
+  }
+
+  public void lifeElapse() {
     lifeSpan -= 2;
   }
 
