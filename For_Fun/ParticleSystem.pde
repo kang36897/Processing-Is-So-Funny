@@ -1,5 +1,5 @@
 class ParticleSystem {
-  Emitter mEmitter;
+  Mover mEmitter;
   NormalRecycler mRecycler;
 
   ArrayList<Particle> mParticles;
@@ -11,7 +11,7 @@ class ParticleSystem {
     mParticles = new ArrayList<Particle>();
   }
 
-  public ParticleSystem(Emitter m) {
+  public ParticleSystem(Mover m) {
     mEmitter = m;
     mRecycler = new NormalRecycler();
     mParticles = new ArrayList<Particle>();
@@ -47,6 +47,7 @@ class ParticleSystem {
 
       if (p.isDead()) {
         mParticles.remove(i);
+        mRecycler.recycle(p);
       }
     }
   }

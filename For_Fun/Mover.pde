@@ -32,7 +32,13 @@ class Mover {
 
 
   public void setLocation(PVector l) {
-    mLocation = l.copy();
+    if (mLocation == null) {
+      mLocation = l.copy();
+    } else {
+      mLocation.mult(0);
+      mLocation.add(l);
+    }
+
     mVelocity = PVector.random2D();
     mAcceleration.mult(0);
   }

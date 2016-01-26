@@ -1,22 +1,24 @@
 //This is just a particle system. //<>// //<>// //<>//
 float distance = 150;
 Star big;
-Star[] stars = new Star[3];
 PVector tempVelocity;
 PVector tempLocation = new PVector();
 void setup() {
-  size(600, 400);
-
+  size(600, 600);
   smooth();
 
   big = new Star(new PVector(width / 2, height / 2), 0, 0, 0, 32);
 
   float angle = 0;
 
-  for ( int i = 0; i < stars.length; i ++) {
-    stars[i] = new Star(big, distance, angle, -TWO_PI / 400, 16);
+  for ( int i = 0; i < 3; i ++) {
+    Star s = new Star(new PVector(0, 0), distance, angle, -TWO_PI / 1200, 16);
+    s.orbit(big);
+    s.showSatelliteOrbit(true);
+    s.attached(new DotParticleSystem(s));
 
-
+    Star child = new SpecialStar(new PVector(0, 0), distance / 2, angle + PI, -TWO_PI / 200, 8);
+    child.orbit(s);
 
     angle += HALF_PI * 4 / 3;
   }
@@ -26,15 +28,5 @@ void setup() {
 void draw() {
   background(0);
 
-  big.display();
-
-  for (int i = 0; i< stars.length; i++) {
-
-    stroke(255);
-    strokeWeight(2);
-    line(big.mLocation.x, big.mLocation.y, stars[i].mLocation.x, stars[i].mLocation.y);
-
-    stars[i].display();
-    stars[i].update();
-  }
+  big.run();
 }
