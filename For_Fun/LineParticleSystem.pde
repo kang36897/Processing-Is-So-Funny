@@ -12,7 +12,7 @@ class LineParticleSystem extends ParticleSystem {
 
   public void addParticle() {
 
-    if (segmentCount % 2 == 0) {
+    if (segmentCount % 4 == 0) {
       if (mRecycler.isEmpty()) {
         mSegment = new LineParticle();
       } else {
@@ -22,11 +22,13 @@ class LineParticleSystem extends ParticleSystem {
 
       if (mLastPostion != null) {
         mSegment.addVetex(mLastPostion);
+      } else {
+        mSegment.addVetex(mEmitter.mLocation);
       }
-    } else if (segmentCount % 2 == 1) {
+    } else if (segmentCount % 4 == 3) {
 
       mLastPostion = mEmitter.mLocation.copy();
-      mSegment.addVetex(mLastPostion);
+      mSegment.addLastVetex(mLastPostion);
       mParticles.add(mSegment);
     } else {
       mSegment.addVetex(mEmitter.mLocation);
